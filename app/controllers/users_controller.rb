@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    after_action :authorized, only: [:create]
     def new
         
 
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
+        authorized
 
     end
 
